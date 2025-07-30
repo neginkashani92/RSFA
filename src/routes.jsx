@@ -3,12 +3,12 @@ import App from "./App";
 
 const routes=[
     {
-        Path:'/',
-        Element:
-        errorElement:
-        Children:[
+        path:'/',
+        element:<App/>
+        // errorElement:
+        // Children:[
 
-        ]
+        // ]
     }
 ]
 export default routes

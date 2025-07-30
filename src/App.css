@@ -4,7 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-
+  --font-arimoR: 'ArimoR', sans-serif;
+  --font-arimoB: 'ArimoB', sans-serif;
+    --color-navy: #124395;
 }
 
 @theme inline {
@@ -121,5 +123,17 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+@font-face {
+  font-family: 'ArimoR';
+  src: url('/src/assets/fonts/Arimo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ArimoB';
+  src: url('/src/assets/fonts/Arimo-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 

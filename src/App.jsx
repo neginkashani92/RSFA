@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-    <h1>test</h1>
+    <p className="font-arimoB text-navy">This uses Arimo regular</p>
     </>
   )
 }
