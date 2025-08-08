@@ -1,14 +1,16 @@
-import { Children } from "react";
 import App from "./App";
+import Setting from "./pages/Setting.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
-const routes=[
-    {
-        path:'/',
-        element:<App/>
-        // errorElement:
-        // Children:[
+const routes = [
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "setting", element: <Setting /> },
+    ],
+  },
+];
 
-        // ]
-    }
-]
-export default routes
+export default routes;
