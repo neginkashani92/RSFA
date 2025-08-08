@@ -1,18 +1,9 @@
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { fromTheme } from "tailwind-merge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+import UserAvatar from "../components/setting/userAvatar";
+import EditProfile from "../components/setting/editProfile";
+import AccessSetting from "../components/setting/accessSetting";
+import ChangePassword from "../components/setting/changePassword";
 // const formSchema = z.object({
 //   username: z.string().min(2, {
 //     message: "Username must be at least 2 characters.",
@@ -44,33 +35,12 @@ function Setting() {
               d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
             />
           </svg>
-          <h1 className="pl-3 font-arimoB">Information</h1>
+          <h1 className="pl-3 font-arimoB uppercase">Information</h1>
         </div>
         <div className="md:flex gap-6">
           <div className="md:w-1/2 border border-1 shadow-md flex-col p-8 ">
             <div className="flex gap-4 items-center ">
-              <Avatar className="w-20 h-20">
-                <AvatarImage
-                  src="https://example.com/your-photo.jpg"
-                  alt="User avatar"
-                />
-                <AvatarFallback className="">
-                  <img
-                    src="https://ui-avatars.com/api/?background=black&color=fff&name=Negin+Kashani"
-                    alt="Fallback avatar"
-                    className="w-full h-full"
-                  />
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <h2 className="uppercase pb-2 font-arimoR">your Avatar</h2>
-                <Button
-                  type="submit"
-                  className="bg-transparent text-xs text-black border-1 border-navy hover:bg-gray-200 rounded-none"
-                >
-                  Upload your photos
-                </Button>
-              </div>
+              <UserAvatar />
             </div>
 
             <hr className="my-9" />
@@ -89,113 +59,10 @@ function Setting() {
                   d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                 />
               </svg>
-              <h2 className="pl-2 font-arimoR pb-2">Edit your profile</h2>
+              <h2 className="pl-2 font-arimoR pb-2 uppercase">Edit your profile</h2>
             </div>
 
-            <Form {...form}>
-              <form className="space-y-8">
-                <div className="grid grid-cols-4 gap-x-4 gap-y-6 mt-4">
-                  <div className="col-span-4 md:col-span-2">
-                    <FormField
-                      control={form.control}
-                      name="username"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Your Name"
-                              {...field}
-                              className="rounded-none"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="col-span-4 md:col-span-2">
-                    <FormField
-                      control={form.control}
-                      name="username"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Family Name</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Your Family Name"
-                              {...field}
-                              className="rounded-none"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="col-span-4 md:col-span-3">
-                    <FormField
-                      control={form.control}
-                      name="Telephone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Telephone</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Your Telephone number"
-                              {...field}
-                              className="rounded-none"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="col-span-4 md:col-span-1">
-                    <FormField
-                      control={form.control}
-                      name="Telephone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Ex.</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="123"
-                              {...field}
-                              className="rounded-none"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="col-span-4">
-                    <FormField
-                      control={form.control}
-                      name="Email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Second Email</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="shadcn"
-                              {...field}
-                              className="rounded-none"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                </div>
-                  <div className="text-right">
-                    <Button type="submit">Submit</Button>
-                  </div>
-              </form>
-            </Form>
+            <EditProfile />
           </div>
           <div className="md:w-1/2 space-y-4">
             <div className="border border-1 shadow-md p-8 my-7 md:my-0 md:mb-3">
@@ -217,32 +84,7 @@ function Setting() {
                 <h2 className="uppercase font-arimoR">ACCESS SETTINGS</h2>
               </div>
               <div>
-                <Form {...form}>
-                  <form className="space-y-5">
-                    <div>
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                              <Input
-                              
-                                {...field}
-                                className="rounded-none"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="text-right">
-                      <Button type="submit">Submit</Button>
-                    </div>
-                  </form>
-                </Form>
+               <AccessSetting/>
               </div>
             </div>
 
@@ -266,52 +108,7 @@ function Setting() {
                 <h2 className="uppercase font-arimoR">Change your password</h2>
               </div>
               <div>
-                <Form {...form}>
-                  <form className="space-y-8">
-                    <div>
-                      <FormField
-                        control={form.control}
-                        name="password"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>New Password</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="New password"
-                                {...field}
-                                className="rounded-none"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div>
-                      <FormField
-                        control={form.control}
-                        name="confirmPassword"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Confirm Password</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="confirm password"
-                                {...field}
-                                className="rounded-none"
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                    <div className="text-right">
-                      <Button type="submit">Submit</Button>
-                    </div>
-                  </form>
-                </Form>
+             <ChangePassword/>
               </div>
             </div>
           </div>
