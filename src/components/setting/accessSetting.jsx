@@ -16,29 +16,28 @@ function accessSetting() {
 
   return (
     <>
-   <Form {...form}>
-                  <form className="space-y-5">
-                    <div>
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                              <Input {...field} className="rounded-none" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="text-right">
-                      <Button type="submit">Submit</Button>
-                    </div>
-                  </form>
-                </Form>
-      
+      <Form {...form}>
+        <form className="space-y-5">
+          <div>
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input {...field} className="rounded-none" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="text-right">
+            <Button type="submit">Submit</Button>
+          </div>
+        </form>
+      </Form>
     </>
   );
 }
