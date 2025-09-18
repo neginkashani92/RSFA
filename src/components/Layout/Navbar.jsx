@@ -8,6 +8,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -17,15 +19,15 @@ function Navbar() {
           <div className="flex items-center gap-6">
             <img src={favicon} alt="RSAF-logo" className="w-8 h-8" />
             <nav className="space-x-8 text-md px-4" aria-label="main">
-              <a href="#" className="hover:opacity-70">
+              <Link to="/" className="hover:opacity-70">
                 TABLEAU DE BORD
-              </a>
-              <a href="#" className="hover:opacity-70">
+              </Link>
+              <Link to="/setting" className="hover:opacity-70">
                 DOSSIERS
-              </a>
-              <a href="#" className="hover:opacity-70">
+              </Link>
+              <Link to="/client" className="hover:opacity-70">
                 CLIENTS
-              </a>
+              </Link>
             </nav>
           </div>
           <div className="flex">
