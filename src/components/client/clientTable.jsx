@@ -109,32 +109,19 @@ function clientTable() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="font-bold">Client</TableHead>
+            <TableHead className="font-bold pl-5">Client</TableHead>
             <TableHead className="font-bold">ID</TableHead>
             <TableHead className="font-bold pl-8">Telephone</TableHead>
             <TableHead className="font-bold">Address</TableHead>
             <TableHead className="font-bold">Branches</TableHead>
-            <TableHead className="font-bold">Active Folder</TableHead>
+            <TableHead className="font-bold pr-4">Active Folder</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {users.map((user) => (
             <TableRow key={user.id}>
               <TableCell className="font-medium py-4">
-                <div className="flex items-center gap-2">
-                  <Avatar className="w-5 h-5">
-                    <AvatarImage
-                      src="https://example.com/your-photo.jpg"
-                      alt="User avatar"
-                    />
-                    <AvatarFallback className="">
-                      <img
-                        src={`https://ui-avatars.com/api/?background=black&color=fff&name=${user?.client}`}
-                        alt="Fallback avatar"
-                        className="w-full h-full"
-                      />
-                    </AvatarFallback>
-                  </Avatar>
+                <div className="flex items-center gap-2 pl-4">
                   {user?.client}
                 </div>
               </TableCell>
@@ -146,37 +133,58 @@ function clientTable() {
             </TableRow>
           ))}
         </TableBody>
+
         <TableFooter className="bg-white">
-          <TableRow className="border border-0 hover:bg-transparent">
+          <TableRow className="border-0 hover:bg-transparent">
             <TableCell colSpan={6} className="p-0">
-              <div className="w-full flex justify-center py-3">
-                <Pagination>
-                  <PaginationContent>
-                    <PaginationItem>
-                      <PaginationPrevious href="#" />
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#">1</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#" isActive>
-                        2
-                      </PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationLink href="#">3</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationEllipsis />
-                    </PaginationItem>
-                    <PaginationItem>
-                      <PaginationNext href="#" />
-                    </PaginationItem>
-                  </PaginationContent>
-                </Pagination>
+              <div className="relative w-full py-3 flex items-center">
+                {/* Left: Previous */}
+                <div className="absolute left-0">
+                  <Pagination>
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationPrevious href="#" />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </div>
+
+                {/* Center: Page Links */}
+                <div className="mx-auto">
+                  <Pagination>
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationLink href="#">1</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#" isActive>
+                          2
+                        </PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationLink href="#">3</PaginationLink>
+                      </PaginationItem>
+                      <PaginationItem>
+                        <PaginationEllipsis />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </div>
+
+                {/* Right: Next */}
+                <div className="absolute right-0">
+                  <Pagination>
+                    <PaginationContent>
+                      <PaginationItem>
+                        <PaginationNext href="#" />
+                      </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+                </div>
               </div>
             </TableCell>
           </TableRow>
+
           <TableRow className="hover:bg-transparent">
             <TableCell colSpan={6}>
               <div className="w-full flex justify-center py-3">
