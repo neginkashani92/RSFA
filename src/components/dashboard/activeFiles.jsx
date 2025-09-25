@@ -327,7 +327,7 @@ function activeFiles() {
                 <p className="font-bold">files</p>
               </div>
               <div>
-                <ul className="py-4 space-y-5">
+                <ul className="py-4 space-y-5 text-end">
                   <li className="text-xs items-center">7</li>
                   <li className="text-xs items-center">6</li>
                   <li className="text-xs items-center">2</li>
