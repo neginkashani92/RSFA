@@ -1,7 +1,7 @@
 import NewMessages from "../components/dashboard/newMessages";
-import { Button } from "@/components/ui/button";
 import Notifications from "../components/dashboard/notifications";
-
+import Status from "../components/dashboard/status";
+import ActiveFiles from "../components/dashboard/activeFiles";
 function Dashboard() {
   return (
     <>
@@ -48,12 +48,16 @@ function Dashboard() {
             <div className="md:w-1/2 border border-1 shadow-md p-4">
               <NewMessages />
             </div>
-        
+            <div className="md:w-1/2 border border-1 shadow-md p-4 ">
+              <Status />
+            </div>
           </div>
           <div className="md:w-1/4 border border-1 shadow-md p-4 h-[400px] overflow-y-auto">
             <Notifications />
           </div>
         </div>
+
+        <ActiveFiles />
       </div>
     </>
   );
