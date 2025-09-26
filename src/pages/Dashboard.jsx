@@ -3,6 +3,7 @@ import Notifications from "../components/dashboard/notifications";
 import Status from "../components/dashboard/status";
 import ActiveFiles from "../components/dashboard/activeFiles";
 import Clients from "../components/dashboard/clients";
+import Statistics from "../components/dashboard/statistics";
 function Dashboard() {
   return (
     <>
@@ -57,9 +58,10 @@ function Dashboard() {
             <Notifications />
           </div>
         </div>
-        <div className="md:flex gap-5 w-full">
+        <div className="md:flex gap-5 pb-4 w-full">
         <ActiveFiles />
         <Clients/>
+        <Statistics/>
         </div>
       </div>
     </>
