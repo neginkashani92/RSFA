@@ -10,9 +10,20 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 
-function accessSetting() {
- const form = useForm();
+function accessSetting({email}) {
+ const form = useForm({
+  email: "",
+ });
+
+ useEffect(() => {
+     if (email) {
+       form.reset({
+         email: email || "",
+       });
+     }
+   }, [email, form]);
 
   return (
     <>

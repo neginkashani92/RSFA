@@ -10,19 +10,22 @@ import {
 } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import UserDelete from "../setting/userDelete"
+import { useEffect, useState } from "react";
+import axiosClient from "@/lib/axiosClient";
+
 function userTable() {
- const users = [
-  { id: "1", name: "Negin Kashani", Status: "Active", Role: "Superadmin" },
-  { id: "2", name: "Aria Johnson", Status: "Non Active", Role: "Clerk" },
-  { id: "3", name: "Daniel Smith", Status: "Active", Role: "Administrator" },
-  { id: "4", name: "Sara Williams", Status: "Active", Role: "Clerk" },
-  { id: "5", name: "Omid Rahmani", Status: "Non Active", Role: "Superadmin" },
-  { id: "6", name: "Liam Brown", Status: "Active", Role: "Administrator" },
-  { id: "7", name: "Mina Farahani", Status: "Non Active", Role: "Clerk" },
-  { id: "8", name: "Sophia Miller", Status: "Active", Role: "Superadmin" },
-  { id: "9", name: "Kian Anderson", Status: "Active", Role: "Administrator" },
-  { id: "10", name: "Emma Davis", Status: "Non Active", Role: "Clerk" },
-];
+   const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axiosClient
+      .get("/users?limit=10&skip=0")
+      .then((response) => {
+        setUsers(response.data?.users);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch user:", error);
+      });
+  }, []);
 
   return (
     <>
@@ -31,7 +34,7 @@ function userTable() {
           <TableRow>
             <TableHead className="font-bold">Name</TableHead>
             <TableHead className="font-bold">Role</TableHead>
-            <TableHead className="font-bold">Status</TableHead>
+            <TableHead className="font-bold">email</TableHead>
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -53,12 +56,12 @@ function userTable() {
                     />
                   </AvatarFallback>
                 </Avatar>
-                {user?.name}
+               {user?.firstName + " " + user?.lastName}
 
                 </div>
               </TableCell>
-              <TableCell>{user.Role}</TableCell>
-              <TableCell>{user.Status}</TableCell>
+              <TableCell>{user.role}</TableCell>
+              <TableCell>{user.email}</TableCell>
               <TableCell className="text-right"><UserDelete/> </TableCell>
             </TableRow>
           ))}
