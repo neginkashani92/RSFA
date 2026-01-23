@@ -11,10 +11,37 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { fromTheme } from "tailwind-merge";
+import { useEffect } from "react";
 
-function editProfile() {
-  const form = useForm();
+function editProfile({user}) {
+  const form = useForm({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      extension: "",
+      secondEmail: "",
+    },
+  });
+ useEffect(() => {
+    if (user) {
+      form.reset({
+        firstName: user.firstName || "",
+        lastName: user.lastName || "",
+        phone: user.phone || "",
+        email: user.email || "",
+        extension: user.extension || "",
+        secondEmail: user.secondEmail || "",
+      });
+    }
+  }, [user, form]);
 
+ const onSubmit = (data) => {
+    console.log("Updated profile:", data);
+  };
+  
+ 
   return (
     <>
       <Form {...form}>
@@ -23,14 +50,14 @@ function editProfile() {
             <div className="col-span-4 md:col-span-2">
               <FormField
                 control={form.control}
-                name="username"
+                name="firstName"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Your Name"
-                        {...field}
+                       placeholder="First Name" 
+                       {...field}
                         className="rounded-none"
                       />
                     </FormControl>
@@ -42,14 +69,13 @@ function editProfile() {
             <div className="col-span-4 md:col-span-2">
               <FormField
                 control={form.control}
-                name="username"
+                name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Family Name</FormLabel>
+                    <FormLabel>Last Name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Your Family Name"
-                        {...field}
+                         placeholder="Last Name" {...field}
                         className="rounded-none"
                       />
                     </FormControl>
@@ -61,14 +87,13 @@ function editProfile() {
             <div className="col-span-4 md:col-span-3">
               <FormField
                 control={form.control}
-                name="Telephone"
+                name="phone"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Telephone</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Your Telephone number"
-                        {...field}
+                        placeholder="Telephone" {...field}
                         className="rounded-none"
                       />
                     </FormControl>
@@ -86,8 +111,7 @@ function editProfile() {
                     <FormLabel>Ex.</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="123"
-                        {...field}
+                        placeholder="123" {...field}
                         className="rounded-none"
                       />
                     </FormControl>
@@ -99,14 +123,13 @@ function editProfile() {
             <div className="col-span-4">
               <FormField
                 control={form.control}
-                name="Email"
+                name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Second Email</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="shadcn"
-                        {...field}
+                        placeholder="Email" {...field}
                         className="rounded-none"
                       />
                     </FormControl>
