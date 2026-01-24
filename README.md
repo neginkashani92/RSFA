@@ -1,12 +1,74 @@
-# React + Vite
+# RSFA (Le Repos Saint-François)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+This project is an internal administrative panel for RSFA (Le Repos Saint-François).
+It is designed to help the super administrator manage system activities and operations.
+The panel includes features such as:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dashboard and system overview**
+- **Client management**
+- **User and role handling**
+- **Settings and configuration**
+- **Secure access using authentication and protected routes**
 
-## Expanding the ESLint configuration
+The system is built as a modern web application with a focus on:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Clean UI**
+- **Maintainable component structure**
+- **Scalable architecture**
+- **Secure API communication**
+
+## Tech Stack
+
+The project relies on a robust set of modern web technologies:
+
+- **Framework**: React (powered by Vite)
+- **Routing**: React Router DOM
+- **UI & Styling**: Tailwind CSS, Radix UI, Lucide React, clsx, tailwind-merge
+- **Form Handling**: React Hook Form, Yup
+- **Data Visualization**: Recharts
+- **HTTP Client**: Axios
+
+## Installation
+
+Follow these steps to set up the project locally.
+
+### 1. Clone the repository
+
+```bash
+git clone <repository_url>
+cd RSFA
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173` (or the port shown in the terminal).
+
+### 4. Build for production
+
+To create a production-ready build:
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+Here is an overview of the main folders and files in the project:
+
+- **`src/components/`** → Reusable UI and logic components.
+- **`src/pages/`** → Main application pages (Dashboard, Client, Settings, etc.).
+- **`src/lib/`** → Utilities such as API configuration and helper functions.
+- **`src/assets/`** → Static files (images, icons, etc.).
+- **`src/routes.jsx`** → Application routing configuration.
