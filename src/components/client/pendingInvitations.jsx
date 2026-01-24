@@ -22,7 +22,7 @@ function pendingInvitations() {
     <>
       <Sheet>
         <SheetTrigger asChild className="w-full">
-          <Button variant="link">Pending invitations</Button>
+          <Button variant="link" className="cursor-pointer">Pending invitations</Button>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>

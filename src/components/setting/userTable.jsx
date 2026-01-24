@@ -26,7 +26,7 @@ function userTable() {
         console.error("Failed to fetch user:", error);
       });
   }, []);
-
+  const admins = users.filter(user => user.role === 'admin');
   return (
     <>
       <Table>
@@ -39,7 +39,7 @@ function userTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {users.map((user) => (
+          {admins.map((user) => (
             <TableRow key={user.id}>
               <TableCell className="font-medium">
                 <div className="flex items-center gap-2">

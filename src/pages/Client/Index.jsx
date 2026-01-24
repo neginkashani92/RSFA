@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import Filters from "../components/client/filters";
-import ClientTable from "../components/client/clientTable";
-import PendingInvitations from "../components/client/pendingInvitations";
-import AddNewClient from "../components/client/addNewClient";
+import Filters from "../../components/client/filters";
+import ClientTable from "../../components/client/clientTable";
+import PendingInvitations from "../../components/client/pendingInvitations";
+import AddNewClient from "../../components/client/addNewClient";
 
 function Client() {
   const [query, setQuery] = useState("");
@@ -33,10 +33,10 @@ function Client() {
           <h1 className="pl-3 font-arimoB uppercase">Clients</h1>
         </div>
         <div className="w-full md:max-w-sm">
-         <Filters/>
+          <Filters />
           <hr />
           <div className=" py-5">
-            <AddNewClient/>
+            <AddNewClient />
           </div>
           <div>
             {/* pendingInvitationsDrawer*/}
