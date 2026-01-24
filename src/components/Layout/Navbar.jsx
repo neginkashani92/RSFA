@@ -10,8 +10,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 import favicon from "../../assets/img/favicon-260.png";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   return (
     <>
       <header className="bg-navy text-white w-full h-15">
@@ -20,10 +22,7 @@ function Navbar() {
             <img src={favicon} alt="RSAF-logo" className="w-8 h-8" />
             <nav className="hidden md:flex space-x-8 text-md px-4" aria-label="main">
               <Link to="/" className="hover:opacity-70">
-                TABLEAU DE BORD
-              </Link>
-              <Link to="/setting" className="hover:opacity-70">
-                DOSSIERS
+                DASHBOARD
               </Link>
               <Link to="/client" className="hover:opacity-70">
                 CLIENTS
@@ -56,7 +55,7 @@ function Navbar() {
               </DropdownMenuTrigger>
 
               <DropdownMenuContent>
-                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate(`/setting`)}>Setting</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Logout</DropdownMenuItem>
               </DropdownMenuContent>
@@ -123,8 +122,7 @@ function Navbar() {
                     </Avatar>
                   </div>
                   <div className="flex flex-col gap-4 text-center">
-                    <Link to="/">TABLEAU DE BORD</Link>
-                    <Link to="/setting">DOSSIERS</Link>
+                    <Link to="/">DASHBOARD</Link>
                     <Link to="/client">CLIENTS</Link>
                   </div>
                 </nav>
