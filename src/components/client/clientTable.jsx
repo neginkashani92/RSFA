@@ -19,9 +19,11 @@ import {
 } from "@/components/ui/pagination";
 import { useEffect, useState } from "react";
 import axiosClient from "@/lib/axiosClient";
+import { useNavigate } from "react-router-dom";
 
 function clientTable() {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosClient
@@ -50,7 +52,11 @@ function clientTable() {
         </TableHeader>
         <TableBody>
           {users.map((user) => (
-            <TableRow key={user.id}>
+            <TableRow
+              key={user.id}
+              onClick={() => navigate(`/client/${user.id}`)}
+              className="cursor-pointer hover:bg-muted/50 transition"
+            >
               <TableCell className="font-medium py-4">
                 <div className="flex items-center gap-2 pl-4">
                   {user.firstName} {user.lastName}
