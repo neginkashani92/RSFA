@@ -31,13 +31,13 @@ function addNewClient() {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                class="size-4"
+                className="size-4"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M12 4.5v15m7.5-7.5h-15"
                 />
               </svg>
@@ -148,32 +148,6 @@ function addNewClient() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span>BRANCH</span>
-              <hr className="flex-1 border-t border-gray-300" />
-            </div>
-            <div>
-              <Button
-                type="submit"
-                className="bg-transparent text-xs text-black border-1 border-slate-400 rounded-none hover:bg-gray-200"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 4.5v15m7.5-7.5h-15"
-                  />
-                </svg>
-                Add Branch
-              </Button>
             </div>
             <DialogFooter>
               <DialogClose asChild>
