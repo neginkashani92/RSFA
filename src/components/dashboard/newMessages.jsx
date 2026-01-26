@@ -60,7 +60,7 @@ function newMessages() {
                 <h2 className="font-bold text-sm">
                   New messages
                   <span class="inline-flex items-center ml-2 justify-center w-5 h-5 text-xs font-bold text-white bg-[#C9A66A] border-1 border-white rounded-full dark:border-gray-900">
-                    3
+                    4
                   </span>
                   
                 </h2>
@@ -95,6 +95,17 @@ function newMessages() {
               </div>
 
                <div className="py-4">
+              <div>
+                <p className="text-sm">2023-441 | <span className="font-bold">582 F. THERIAULT INC.</span></p>
+              </div>
+              <div className="text-xs">
+                <p>Example of a condensed message from a customer that appears...</p>
+              </div>
+              <div className="text-xs text-slate-600">
+              <p>JUL 29 at 9:02</p>
+              </div>
+              </div>
+                <div className="py-4">
               <div>
                 <p className="text-sm">2023-441 | <span className="font-bold">582 F. THERIAULT INC.</span></p>
               </div>

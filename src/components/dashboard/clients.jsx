@@ -1,7 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useEffect, useState } from "react";
+import axiosClient from "@/lib/axiosClient";
 
 function Clients() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    axiosClient
+      .get("/users?limit=14&skip=0")
+      .then((res) => {
+        const allUsers = res.data.users;
+        const admins = allUsers.filter((user) => user.role === "moderator");
+        setUsers(admins);
+      })
+      .catch((err) => console.error("Error fetching users:", err));
+  }, []);
+
   return (
     <>
       <div className="flex my-8 gap-5 flex-col lg:w-1/4 w-full">
@@ -49,208 +63,53 @@ function Clients() {
         <div className="flex border border-1 shadow-md p-3 justify-between">
           <div className="flex flex-col pl-2 ">
             <div className="text-xs">
-              <p className="font-bold">Client</p>
+              <p className="font-bold">Moderator</p>
             </div>
             <div>
               <ul className="py-4 space-y-4">
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Kevin+Houle"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">Kevin Houle</div>
-                  </div>
-                </li>
+                {users.map((user) => {
+                  const fullName = `${user.firstName} ${user.lastName}`;
+                  const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                    fullName,
+                  )}`;
 
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Isael+Martineau"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">Isael Martineau</div>
-                  </div>
-                </li>
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Caroline+Asselin"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">Caroline Asselin</div>
-                  </div>
-                </li>
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Dorianne+Dubé"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">Dorianne Dubé</div>
-                  </div>
-                </li>
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Monique+MonPetit"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">
-                      Monique Mon Petit
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Marc+Hebert"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">Marc Hebert</div>
-                  </div>
-                </li>
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Ismael+Kashafar"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">Ismael Kashafar</div>
-                  </div>
-                </li>
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Véronique+Vaillancourt"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">
-                      Véronique Vaillancourt
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  {" "}
-                  <div className="flex gap-2">
-                    <Avatar className="size-5">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback className="">
-                        <img
-                          src="https://ui-avatars.com/api/?name=Mireille+Séguin"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="text-xs items-center">Mireille Séguin</div>
-                  </div>
-                </li>
+                  return (
+                    <li key={user.id}>
+                      <div className="flex gap-2">
+                        <Avatar className="size-5">
+                          <AvatarFallback className="text-[8px] flex items-center justify-center font-s bg-gray-500 text-white">
+                            {user.firstName?.[0]}
+                            {user.lastName?.[0]}
+                          </AvatarFallback>
+                        </Avatar>
+
+                        <div className="text-xs items-center">{fullName}</div>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
-          
-            <div className="flex flex-col">
-              <div className="text-xs">
-                <p className="font-bold">Active files</p>
-              </div>
-              <div>
-                <ul className="py-4 space-y-5 text-end">
-                  <li className="text-xs items-center">4</li>
-                  <li className="text-xs items-center">3</li>
-                  <li className="text-xs items-center">2</li>
-                  <li className="text-xs items-center">1</li>
-                  <li className="text-xs items-center">1</li>
-                  <li className="text-xs items-center">1</li>
-                  <li className="text-xs items-center">1</li>
-                  <li className="text-xs items-center">1</li>
-                  <li className="text-xs items-center">1</li>
-                </ul>
-              </div>
+
+          <div className="flex flex-col">
+            <div className="text-xs">
+              <p className="font-bold">Active files</p>
             </div>
+            <div>
+              <ul className="py-4 space-y-5 text-end">
+                <li className="text-xs items-center">4</li>
+                <li className="text-xs items-center">3</li>
+                <li className="text-xs items-center">2</li>
+                <li className="text-xs items-center">1</li>
+                <li className="text-xs items-center">1</li>
+                <li className="text-xs items-center">1</li>
+                <li className="text-xs items-center">1</li>
+                <li className="text-xs items-center">1</li>
+                <li className="text-xs items-center">1</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </>
