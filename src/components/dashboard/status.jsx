@@ -3,7 +3,7 @@ function Status() {
   return (
     <>
       <div className="flex justify-between">
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center p-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -28,7 +28,7 @@ function Status() {
             <span className="text-xs text-slate-600 pt-0">Assign to me</span>
           </div>
         </div>
-        <div>
+        <div className="p-2">
           <Button
             type="submit"
             className="bg-transparent text-xs text-black border-1 border-slate-400 rounded-none hover:bg-gray-200"
@@ -53,7 +53,7 @@ function Status() {
       </div>
 
       <div className="flex gap-3">
-      <div className="flex flex-col w-1/2 h-84 py-6">
+      <div className="flex flex-col w-1/2 h-84  ps-2">
         <div className="flex flex-1 items-center justify-center bg-gradient-to-b h-1/2 from-slate-200 to-white border-t-4 border-t-black">
           <div className="flex flex-col text-center">
           <h1 className="font-bold text-2xl">6</h1>
@@ -68,7 +68,7 @@ function Status() {
          </div>
         </div>
       </div>
-      <div className="flex flex-col w-1/2 h-84 py-6">
+      <div className="flex flex-col w-1/2 h-84 py-6 pe-2">
         <div className="flex justify-between items-center pb-8">
         <div className="text-sm flex gap-2">
             <div className="inline-flex items-center justify-center w-1 h-12 font-bold text-white bg-[#D5B626] border-1">

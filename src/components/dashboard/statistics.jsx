@@ -26,19 +26,18 @@ import {
 } from "@/components/ui/select";
 
 function Statistics() {
-  // ✅ Define the chart data for each month
   const chartData = {
-    january: [
+    2026: [
       { name: "Cremation", value: 40, fill: "#124395" },
       { name: "Urn Burial", value: 30, fill: "#526587" },
       { name: "Burial of Body", value: 30, fill: "#9DABC4" },
     ],
-    february: [
+    2025: [
       { name: "Cremation", value: 20, fill: "#124395" },
       { name: "Urn Burial", value: 50, fill: "#526587" },
       { name: "Burial of Body", value: 30, fill: "#9DABC4" },
     ],
-    march: [
+    2024: [
       { name: "Cremation", value: 25, fill: "#124395" },
       { name: "Urn Burial", value: 25, fill: "#526587" },
       { name: "Burial of Body", value: 50, fill: "#9DABC4" },
@@ -46,10 +45,10 @@ function Statistics() {
   };
 
   // ✅ Dropdown options
-  const months = ["january", "february", "march"];
+  const months = ["2026", "2025", "2024"];
 
   // ✅ State for selected month
-  const [activeMonth, setActiveMonth] = React.useState("january");
+  const [activeMonth, setActiveMonth] = React.useState("2026");
 
   // ✅ Active dataset for selected month
   const activeData = chartData[activeMonth];
@@ -59,9 +58,9 @@ function Statistics() {
     cremation: { label: "Cremation", color: "#124395" },
     urnBurial: { label: "Urn Burial", color: "#526587" },
     burialOfBody: { label: "Burial of Body", color: "#9DABC4" },
-    january: { label: "January" },
-    february: { label: "February" },
-    march: { label: "March" },
+    2026: { label: "2026" },
+    2025: { label: "2025" },
+    2024: { label: "2024" },
   };
 
   const id = "pie-interactive";
