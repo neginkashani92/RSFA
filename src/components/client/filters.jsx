@@ -47,21 +47,7 @@ function Filters() {
                    />
                  </div>
                </form>
-               <div className="flex flex-col md:flex-row gap-3 py-5">
-                 <Label htmlFor="username-1">File</Label>
-                 <Select>
-                   <SelectTrigger className="w-full md:max-w-md border rounded-none border-gray-300">
-                     <SelectValue placeholder="All" />
-                   </SelectTrigger>
-                   <SelectContent>
-                     <SelectGroup>
-                       <SelectItem value="apple">All</SelectItem>
-                       <SelectItem value="banana">Active</SelectItem>
-                       <SelectItem value="blueberry">Non Active</SelectItem>
-                     </SelectGroup>
-                   </SelectContent>
-                 </Select>
-               </div>
+            
       
     </>
   );
