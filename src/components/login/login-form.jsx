@@ -21,7 +21,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import axiosClient from "@/lib/axiosClient";
-import { setCookie } from "@/lib/utils";
+import { useAuth } from "@/context/AuthContext";
 
 const validation_rules = Yup.object().shape({
   username: Yup.string().required("Email is required"),
@@ -40,32 +40,20 @@ export function LoginForm({ className, ...props }) {
     setError,
   } = useForm({ resolver: yupResolver(validation_rules) });
   const navigate = useNavigate();
+  const { login, user } = useAuth();
+
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
+    if (user) {
       navigate("/");
     }
-  }, [navigate]);
+  }, [user, navigate]);
   const submitForm = async (data) => {
     try {
       const response = await axiosClient.post("/auth/login", data);
 
       if (response.status === 200) {
-        const { accessToken, refreshToken, user } = response.data;
-        if (accessToken) {
-          localStorage.setItem("accessToken", accessToken);
-        } else {
-          console.warn("Access Token not found in response");
-        }
-        if (refreshToken) {
-          setCookie("refreshToken", refreshToken, 70);
-        } else {
-          console.warn("Refresh Token not found in response");
-        }
-        if (user) {
-          localStorage.setItem("user", JSON.stringify(user));
-        } else {
-          console.warn("User object not found in response");
-        }
+        const { accessToken, refreshToken, ...userData } = response.data;
+        login(userData, accessToken, refreshToken);
         navigate("/");
       }
     } catch (error) {
@@ -96,7 +84,7 @@ export function LoginForm({ className, ...props }) {
                   placeholder="m@example.com"
                 />
                 <p className="text-red-500 text-sm mt-1">
-                  {errors.username?.message}
+                  {errors?.username?.message}
                 </p>
               </Field>
               <Field>
@@ -116,7 +104,7 @@ export function LoginForm({ className, ...props }) {
                     type={showPassword ? "text" : "password"}
                   />
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.password?.message}
+                    {errors?.password?.message}
                   </p>
                   <button
                     type="button"
