@@ -50,7 +50,7 @@ function Setting() {
         <div className="md:flex gap-6">
           <div className="md:w-1/2 border border-1 shadow-md flex-col p-8 ">
             <div className="flex gap-4 items-center ">
-              <UserAvatar />
+              <UserAvatar user={user} />
             </div>
 
             <hr className="my-9" />
