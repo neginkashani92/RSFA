@@ -11,16 +11,33 @@ import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 import favicon from "../../assets/img/favicon-260.png";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
+
+
 
 function Navbar() {
+  const { user, logout } = useAuth();
+  console.log(user);
+  const initials = user
+    ? `${user.firstName?.charAt(0) ?? ""}${user.lastName?.charAt(0) ?? ""}`.toUpperCase()
+    : "";
+
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
   return (
     <>
       <header className="bg-navy text-white w-full h-15">
         <div className="max-w-7xl mx-auto p-2 flex justify-between items-center">
           <div className="flex items-center gap-6">
             <img src={favicon} alt="RSAF-logo" className="w-8 h-8" />
-            <nav className="hidden md:flex space-x-8 text-md px-4" aria-label="main">
+            <nav
+              className="hidden md:flex space-x-8 text-md px-4"
+              aria-label="main"
+            >
               <Link to="/" className="hover:opacity-70">
                 DASHBOARD
               </Link>
@@ -29,35 +46,35 @@ function Navbar() {
               </Link>
             </nav>
           </div>
-          
+
           {/* Desktop User Menu */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
+             {user && (
+              <span className="text-white font-medium">
+                {user.firstName} {user.lastName}
+              </span>
+            )}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
                   aria-label="Open user menu"
                   className="p-0 bg-transparent border-none ml-2"
                 >
-                  <Avatar className="size-9">
-                    <AvatarImage
-                      src="https://example.com/your-photo.jpg"
-                      alt="User avatar"
-                    />
-                    <AvatarFallback className="">
-                      <img
-                        src="https://ui-avatars.com/api/?name=Negin+Kashani"
-                        alt="Fallback avatar"
-                        className="w-full h-full"
-                      />
+                  <Avatar>
+                    <AvatarImage src={user?.image} />
+                    <AvatarFallback >
+                      {user?.firstName?.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
                 </button>
               </DropdownMenuTrigger>
 
               <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => navigate(`/setting`)}>Setting</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate(`/setting`)}>
+                  Setting
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Logout</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -106,24 +123,24 @@ function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
                 <nav className="flex flex-col space-y-4 mt-10 text-base font-medium">
-                  <div className="text-center flex justify-center">
+                  <div className="text-center flex flex-col items-center justify-center gap-2">
                     <Avatar className="w-16 h-16">
-                      <AvatarImage
-                        src="https://example.com/your-photo.jpg"
-                        alt="User avatar"
-                      />
-                      <AvatarFallback>
-                        <img
-                          src="https://ui-avatars.com/api/?name=Negin+Kashani"
-                          alt="Fallback avatar"
-                          className="w-full h-full"
-                        />
+                      <AvatarFallback className="bg-slate-800 text-white flex items-center justify-center text-xl font-semibold">
+                        {initials || "?"}
                       </AvatarFallback>
                     </Avatar>
+                     {user && (
+                      <span className="font-medium text-lg">
+                        {user.firstName} {user.lastName}
+                      </span>
+                    )}
                   </div>
                   <div className="flex flex-col gap-4 text-center">
                     <Link to="/">DASHBOARD</Link>
                     <Link to="/client">CLIENTS</Link>
+                    <button onClick={handleLogout} className="text-red-500 hover:text-red-600">
+                      Logout
+                    </button>
                   </div>
                 </nav>
               </SheetContent>
